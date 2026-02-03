@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wael Trabelsi - Portfolio Professionnel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #ecf0f1;
+            --dark-text: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white !important;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,144C960,149,1056,139,1152,128C1248,117,1344,107,1392,101.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-section .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero-section .lead {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-hero {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            margin: 0 10px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .skill-item {
+            background: var(--light-bg);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .skill-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .skill-item h5 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Experience Section */
+        .experience-section {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 30px;
+            width: 10px;
+            height: 10px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px white, 0 0 0 8px var(--secondary-color);
+        }
+
+        .company-name {
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .job-title {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin: 5px 0;
+        }
+
+        .date-location {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            margin-bottom: 30px;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image i {
+            font-size: 5rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .project-tags {
+            margin-top: 15px;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: var(--light-bg);
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 5px 5px 5px 0;
+        }
+
+        /* Certifications Section */
+        .certifications-section {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+
+        .cert-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            margin-bottom: 30px;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+        }
+
+        .contact-item {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-item h5 {
+            margin-bottom: 10px;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline-item::before {
+                display: none;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading Animation */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">WT</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Expérience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container hero-content text-center">
+            <h1>Wael Trabelsi</h1>
+            <p class="subtitle">Digital Marketing & Data Analytics Specialist</p>
+            <p class="lead">Double diplôme entre l'IM et EMLV | Passionné par la stratégie digitale et l'analyse de données</p>
+            <div class="mt-4">
+                <a href="#contact" class="btn btn-light btn-hero">Me Contacter</a>
+                <a href="#projects" class="btn btn-outline-light btn-hero">Voir mes Projets</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title text-center">À propos de moi</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 class="mb-4">Profil</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        Actuellement en double diplôme entre l'IM (Master Digital Marketing & Data Analytics) et EMLV, 
+                        je recherche un stage pour appliquer mes compétences hybrides en stratégie digitale et en analyse 
+                        de données au sein d'une entreprise innovante.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        Ayant acquis une expérience concrète en développement web (HTML/CSS, frameworks Python) et en 
+                        analyse de données (Power BI, GA4), je souhaite mettre mes compétences techniques au service 
+                        de vos projets digitaux.
+                    </p>
+                    <div class="mt-4">
+                        <p><i class="fas fa-calendar-alt me-2" style="color: var(--secondary-color);"></i><strong>Disponibilité:</strong> À partir du 07/04/2026</p>
+                        <p><i class="fas fa-map-marker-alt me-2" style="color: var(--secondary-color);"></i><strong>Localisation:</strong> Paris, France</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="mb-4">Compétences Clés</h3>
+                    
+                    <div class="skill-item">
+                        <h5><i class="fas fa-chart-line me-2"></i>Analyse de Données</h5>
+                        <p class="mb-0">Power BI, GA4, Excel avancé, Visualisation de données, KPI Marketing & Commerciaux</p>
+                    </div>
+
+                    <div class="skill-item">
+                        <h5><i class="fas fa-code me-2"></i>Développement Web</h5>
+                        <p class="mb-0">HTML/CSS, Python (base), Bootstrap, Frameworks Web</p>
+                    </div>
+
+                    <div class="skill-item">
+                        <h5><i class="fas fa-bullhorn me-2"></i>Marketing Digital</h5>
+                        <p class="mb-0">Réseaux sociaux, E-commerce (Shopify), Taux de conversion, Engagement</p>
+                    </div>
+
+                    <div class="skill-item">
+                        <h5><i class="fas fa-handshake me-2"></i>Compétences Commerciales</h5>
+                        <p class="mb-0">Négociation, Relation client B2B/B2C, CRM, Étude de marché</p>
+                    </div>
+
+                    <div class="skill-item">
+                        <h5><i class="fas fa-robot me-2"></i>Outils IA & Créatifs</h5>
+                        <p class="mb-0">ChatGPT, Canva, Sider, DeepSeek</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section">
+        <div class="container">
+            <h2 class="section-title text-center">Expérience Professionnelle</h2>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    
+                    <div class="timeline-item">
+                        <div class="company-name">Selectra | Madrid, Espagne</div>
+                        <div class="job-title">Alternance - Commercial Sédentaire Vente IT</div>
+                        <div class="date-location">
+                            <i class="fas fa-calendar me-2"></i>Août 2025 - Mars 2025
+                        </div>
+                        <ul>
+                            <li>Utilisation d'outils CRM et reporting des performances commerciales</li>
+                            <li>Analyse des besoins clients et argumentaire commercial personnalisé</li>
+                            <li>Développement de stratégies de vente B2B</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="company-name">Intec | Châtillon, France</div>
+                        <div class="job-title">Stage - Logistique des Données</div>
+                        <div class="date-location">
+                            <i class="fas fa-calendar me-2"></i>Février 2024 - Août 2024
+                        </div>
+                        <ul>
+                            <li>Utilisation de Framework HTML & CSS pour le développement web</li>
+                            <li>Prise en main d'outils d'analyse (Power BI, GA4)</li>
+                            <li>Création de tableaux de bord financiers</li>
+                            <li>Suivi des opérations et gestion des stocks</li>
+                            <li>Analyse des tendances de données</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="company-name">Ville de Châtillon | Châtillon, France</div>
+                        <div class="job-title">Stage - Analyse Financière</div>
+                        <div class="date-location">
+                            <i class="fas fa-calendar me-2"></i>Mai 2023 - Juillet 2023
+                        </div>
+                        <ul>
+                            <li>Gestion administrative & bureautique</li>
+                            <li>Mise en place d'une table de transposition</li>
+                            <li>Budget et instructions comptables des collectivités</li>
+                            <li>Analyse budgétaire des marchés publics</li>
+                            <li>Analyse budgétaire des futurs investissements</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title text-center">Mes Projets</h2>
+            <div class="row">
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>Dashboard Power BI - Analyse E-commerce</h4>
+                            <p>Création d'un tableau de bord interactif pour analyser les performances d'un site e-commerce Shopify. Suivi des KPIs: taux de conversion, taux de rebond, panier moyen.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Power BI</span>
+                                <span class="project-tag">E-commerce</span>
+                                <span class="project-tag">Data Viz</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>Analyse de Réseaux Sociaux</h4>
+                            <p>Analyse approfondie des performances sur les réseaux sociaux: taux d'engagement, watch time, taux de rétention. Optimisation de la stratégie de contenu basée sur les données.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Social Media</span>
+                                <span class="project-tag">Analytics</span>
+                                <span class="project-tag">GA4</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>Site Web Responsive</h4>
+                            <p>Développement d'un site web moderne et responsive en utilisant HTML5, CSS3 et Bootstrap. Design adaptatif pour tous les appareils.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTML/CSS</span>
+                                <span class="project-tag">Bootstrap</span>
+                                <span class="project-tag">Responsive</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>Étude de Marché - Secteur IT</h4>
+                            <p>Réalisation d'une étude de marché complète incluant analyse de l'environnement (micro et macro), analyse sectorielle (mapping), et veille concurrentielle.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Étude de marché</span>
+                                <span class="project-tag">Analyse</span>
+                                <span class="project-tag">Stratégie</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>Automatisation Marketing avec IA</h4>
+                            <p>Utilisation d'outils IA (ChatGPT, Sider) pour automatiser la création de contenu marketing et améliorer l'efficacité des campagnes digitales.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">IA</span>
+                                <span class="project-tag">Automation</span>
+                                <span class="project-tag">Marketing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>Gestion de Base de Données CRM</h4>
+                            <p>Mise en place et optimisation d'un système CRM pour améliorer le suivi client et les performances commerciales. Intégration avec Power BI pour le reporting.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">CRM</span>
+                                <span class="project-tag">Database</span>
+                                <span class="project-tag">B2B</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications-section">
+        <div class="container">
+            <h2 class="section-title text-center">Certifications & Formations</h2>
+            <div class="row">
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="cert-card">
+                        <div class="cert-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h5>Microsoft Enablers</h5>
+                        <p>Certifications validées sur l'année en reporting, dashboards et KPI</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="cert-card">
+                        <div class="cert-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h5>Power BI</h5>
+                        <p>Certification en analyse et visualisation de données</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="cert-card">
+                        <div class="cert-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h5>Master II Management SI & Data</h5>
+                        <p>EMLV et IM - Courbevoie<br>2022 - 2027</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="cert-card">
+                        <div class="cert-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h5>Formation Développeur Web</h5>
+                        <p>Formation indépendante - Paris<br>Juillet - Mars 2025</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <h3 class="mb-4">Parcours Académique</h3>
+                </div>
+                <div class="col-lg-6">
+                    <div class="cert-card">
+                        <div class="cert-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h5>Échange Européen - BBU Budapest</h5>
+                        <p>Faculté de Finance et de Comptabilité<br>Septembre 2024 - Janvier 2025</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="cert-card">
+                        <div class="cert-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h5>Compétences Techniques</h5>
+                        <p>Python (base), CSS (base)<br>Suite Office (Excel, Word, PowerPoint avancé)<br>Canva, ChatGPT, Sider, DeepSeek</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title text-center text-white">Contactez-moi</h2>
+            <p class="text-center mb-5" style="font-size: 1.2rem;">
+                Je suis disponible pour un stage à partir du 07/04/2026. N'hésitez pas à me contacter !
+            </p>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h5>Email</h5>
+                        <a href="mailto:waeltra@icloud.com">waeltra@icloud.com</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <h5>Téléphone</h5>
+                        <a href="tel:+33625117237">06 25 11 72 37</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <h5>LinkedIn</h5>
+                        <a href="https://linkedin.com/in/wael-trabelsi" target="_blank">@Wael Trabelsi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links mb-3">
+                <a href="mailto:waeltra@icloud.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/wael-trabelsi" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="tel:+33625117237"><i class="fas fa-phone"></i></a>
+            </div>
+            <p>&copy; 2025 Wael Trabelsi. Tous droits réservés.</p>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Digital Marketing & Data Analytics Specialist</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 70;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'linear-gradient(135deg, #1a252f 0%, #2980b9 100%)';
+            } else {
+                navbar.style.background = 'linear-gradient(135deg, #2c3e50 0%, #3498db 100%)';
+            }
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card, .timeline-item, .cert-card, .skill-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
